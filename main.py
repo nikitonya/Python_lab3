@@ -19,16 +19,23 @@ class SortPeople:
 
 
 def bubblesort(data: list, flag: str) -> list:
-    with tqdm(total=len(data) - 1,desc='Sort', ncols=150) as progress_bar:
+    with tqdm(range(len(data) - 1)) as pbar:
         for j in range(len(data) - 1):
             for i in range(len(data) - 1 - j):
-               #print(f"Сейчас сравниваются {data[i][flag]} от {data[i]['email']} и {data[i + 1][flag]} от {data[i+1]['email']}")
-               progress_bar.update(1)
-               if float(data[i][flag]) > float(data[i + 1][flag]):
-                   # print("Смена")
-                   data[i], data[i + 1] = data[i + 1], data[i]
+                # print(f"Сейчас сравниваются {data[i][flag]} от {data[i]['email']} и {data[i + 1][flag]} от {data[i+1]['email']}")
+                if float(data[i][flag]) > float(data[i + 1][flag]):
+                    # print("Смена")
+                    data[i], data[i + 1] = data[i + 1], data[i]
+            pbar.update(1)
     return data
 
 
 valid_data = SortPeople("C:\\Users\\nikit\\PycharmProjects\\python_lab3\\output.txt")
-bubblesort(valid_data.data, 'height')
+sort_data = bubblesort(valid_data.data[0:100], 'height')
+
+json.dump(
+    sort_data,
+    open(
+        "C:\\Users\\nikit\\PycharmProjects\\python_lab3\\check.txt",
+        "w",
+        encoding="windows-1251"), indent=5, ensure_ascii=False,)
