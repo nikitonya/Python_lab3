@@ -31,7 +31,7 @@ def read_yaml(path):
         return yaml.safe_load(read_file)
 
 
-valid_data = ValidPeople("output.txt")
+valid_data = ValidPeople("C:\\Users\\nikit\\PycharmProjects\\python_lab3\\lab3\\validdata.txt")
 sort_data = bubblesort(valid_data.data, "height")
 
 json.dump(
@@ -42,6 +42,6 @@ json.dump(
         encoding="windows-1251"), indent=5, ensure_ascii=False)
 
 write_yaml(sort_data, 'serialization.yaml')
-read = read_yaml('serialization_all.yaml')
+read_serialize = read_yaml('serialization.yaml')
 
-print(read)
+print(read_serialize)
