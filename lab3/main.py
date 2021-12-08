@@ -31,7 +31,7 @@ def read_yaml(path):
         return yaml.safe_load(read_file)
 
 
-valid_data = ValidPeople("C:\\Users\\nikit\\PycharmProjects\\python_lab3\\output.txt")
+valid_data = ValidPeople("output.txt")
 sort_data = bubblesort(valid_data.data, "height")
 
 json.dump(
